@@ -1,0 +1,53 @@
+if(S==null || T==null){
+    return false;
+}
+if(S.length()==0 && T.length()==0){
+    return true;
+}
+if(Math.abs((S.length()-T.length()))>1){
+    return false;
+}
+boolean operation=false;
+
+int length1 = S.length();
+int length2 = T.length();
+if strings are equal length
+if(length1==length2){
+    int i=0;
+    while(i<length1){
+        if(S.charAt(i)!=T.charAt(i)){
+            if(!operation){
+                operation=true;
+            }else{
+                return false;
+            }
+        }
+        i++;
+    }
+}
+//if strings are not equal length
+else{
+    String longString=new String();
+    String shortString=new String();
+    if(length1>length2){
+        longString=S;
+        shortString=T;
+    }else{
+        longString=T;
+        shortString=S;
+    }
+    int longPointer=0;
+    int shortPointer=0;
+    while(longPointer<longString.length() && shortPointer<shortString.length()){
+         if(longString.charAt(longPointer)!=shortString.charAt(shortPointer)){
+            if(!operation){
+                operation=true;
+                longPointer++;
+            }else{
+                return false;
+            }
+        }
+        longPointer++;
+        shortPointer++;
+    }
+}
