@@ -1,0 +1,29 @@
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        if(nums.length==0){
+            return new ArrayList<Integer>();
+        }
+        int pointer=0;
+        while(pointer<nums.length){
+            if(nums[pointer]<0){
+                pointer++;
+            }else{
+                int location = nums[pointer]-1;
+                if(nums[location]>0){
+                    nums[pointer] = nums[location];
+                    nums[location] = -1;
+                }else{
+                    pointer++;
+                }
+            }
+        }
+        
+        List<Integer> none = new ArrayList<>();
+        for(int i=0; i< nums.length;i++){
+            if(nums[i]>0){
+                none.add(i+1);
+            }
+        }
+        return none;
+    }
+}
